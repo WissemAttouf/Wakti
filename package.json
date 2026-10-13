@@ -1,0 +1,23 @@
+{
+  "name": "wakti",
+  "version": "1.0.0",
+  "description": "Wakti — Coran, horaires de prière et calendrier hégirien (PWA)",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "deploy": "vercel --prod",
+    "deploy:preview": "vercel",
+    "env:list": "vercel env ls",
+    "env:pull": "vercel env pull .env.local",
+    "logs": "vercel logs wakti-ashen.vercel.app --follow",
+    "serve": "npx http-server -p 3000 -c-1 ."
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.34.3",
+    "@vercel/kv": "^2.0.0",
+    "web-push": "^3.6.7"
+  }
+}

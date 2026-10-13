@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Wakti — Coran, heures de prière et calendrier</title>
+  <meta name="description" content="Wakti : lis et écoute le Coran, retrouve les heures de prière et suis le calendrier hégirien et grégorien.">
+  <meta name="theme-color" content="#04201c" id="metaThemeColor" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#eef5f1" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2304201c'/%3E%3Ccircle cx='28' cy='34' r='16' fill='%23e6bd63'/%3E%3Ccircle cx='37' cy='28' r='13' fill='%2304201c'/%3E%3Cpath d='M44 14l2 4.5 5 .6-3.6 3.4.9 5-4.3-2.4-4.3 2.4.9-5-3.6-3.4 5-.6z' fill='%23e6bd63'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Reem+Kufi:wght@500..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Wakti">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M6 5l10 7-10 7z" fill="currentColor" stroke="none"/><path d="M19 5v14"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M18 5L8 12l10 7z" fill="currentColor" stroke="none"/><path d="M5 5v14"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 4h7a3 3 0 013 3v13a2 2 0 00-2-2H2z"/><path d="M22 4h-7a3 3 0 00-3 3v13a2 2 0 012-2h8z"/></symbol>
+  <symbol id="i-book-open" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-mark" viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><path d="M4 6h9M17 6h3M4 12h3M11 12h9M4 18h11M19 18h1"/><circle cx="15" cy="6" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-locate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+  <symbol id="i-headphones" viewBox="0 0 24 24"><path d="M4 15.5v-3a8 8 0 0116 0v3"/><rect x="2" y="14" width="5.2" height="7.2" rx="2.4"/><rect x="16.8" y="14" width="5.2" height="7.2" rx="2.4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.3"/><path d="M2.8 20c0-3.4 2.8-5.6 6.2-5.6s6.2 2.2 6.2 5.6"/><circle cx="17.3" cy="8.6" r="2.6"/><path d="M15.7 14.6c2.7.3 4.8 2.3 4.8 5.4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.7-4.3 4.1 1.1 5.9L12 16.7l-5.3 2.9 1.1-5.9-4.3-4.1 5.9-.7z" stroke-linejoin="round"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.7l7.4-4.4M8.3 13.3l7.4 4.4"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7.5 11l4.5 4.5L16.5 11"/><path d="M4 17.5V19a2 2 0 002 2h12a2 2 0 002-2v-1.5"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></symbol>
+  <symbol id="i-brain" viewBox="0 0 24 24"><path d="M9 3a3 3 0 00-3 3v1a3 3 0 00-2 5 3 3 0 002 5 3 3 0 003 3h3V3H9z"/><path d="M15 3a3 3 0 013 3v1a3 3 0 012 5 3 3 0 01-2 5 3 3 0 01-3 3h-3V3h3z"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-3-6.7"/><path d="M21 3v6h-6"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#/prieres" aria-label="Wakti, accueil">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6dc95"/><stop offset="1" stop-color="#c8963a"/></linearGradient><mask id="cm"><rect width="40" height="40" fill="#fff"/><circle cx="24" cy="15" r="11" fill="#000"/></mask></defs><circle cx="18" cy="21" r="14" fill="url(#lg)" mask="url(#cm)"/><path d="M29 7.5l1.7 3.6 3.9.5-2.9 2.7.8 3.9-3.5-1.9-3.5 1.9.8-3.9-2.9-2.7 3.9-.5z" fill="url(#lg)"/></svg>
+      <b>Wakti</b><i lang="ar">وَقْتِي</i>
+    </a>
+    <nav aria-label="Navigation principale">
+      <a href="#/prieres" data-nav="prieres"><svg class="ic"><use href="#i-moon"/></svg>Prières</a>
+      <a href="#/coran" data-nav="coran"><svg class="ic"><use href="#i-book"/></svg>Coran</a>
+      <a href="#/calendrier" data-nav="calendrier"><svg class="ic"><use href="#i-cal"/></svg>Calendrier</a>
+      <a href="#/douas" data-nav="douas"><svg class="ic"><use href="#i-book-open"/></svg>Douas</a>
+      <a href="#/aide" data-nav="aide"><svg class="ic"><use href="#i-book"/></svg>Aide</a>
+    </nav>
+    <div class="top-tools">
+      <button class="icon-btn" id="themeBtn" aria-label="Changer de thème"><svg class="ic"><use href="#i-sun" id="themeIc"/></svg></button>
+      <button class="icon-btn" data-open="settings" aria-label="Réglages"><svg class="ic"><use href="#i-gear"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<nav class="bnav" aria-label="Navigation mobile">
+  <a href="#/prieres" data-nav="prieres"><svg class="ic"><use href="#i-moon"/></svg>Prières</a>
+  <a href="#/coran" data-nav="coran"><svg class="ic"><use href="#i-book"/></svg>Coran</a>
+  <a href="#/calendrier" data-nav="calendrier"><svg class="ic"><use href="#i-cal"/></svg>Calendrier</a>
+  <a href="#/qibla" data-nav="qibla"><svg class="ic"><use href="#i-compass"/></svg>Qibla</a>
+  <a href="#/douas" data-nav="douas"><svg class="ic"><use href="#i-book-open"/></svg>Douas</a>
+  <a href="#/aide" data-nav="aide"><svg class="ic"><use href="#i-book"/></svg>Aide</a>
+</nav>
+
+<main class="wrap">
+  <noscript><p class="empty">Wakti a besoin de JavaScript pour afficher les horaires et le Coran.</p></noscript>
+
+  <!-- PRIERES -->
+  <section id="view-prieres" class="view" aria-label="Heures de prière">
+    <div class="sky" id="sky" data-phase="night">
+      <div class="sky-head">
+        <div>
+          <p class="hijri" id="hijriToday" lang="ar" dir="rtl">&nbsp;</p>
+          <p class="greg" id="gregToday">&nbsp;</p>
+        </div>
+        <button class="chip" id="locBtn" data-open="loc"><svg class="ic"><use href="#i-pin"/></svg><span id="locLabel">Choisir ma ville</span></button>
+      </div>
+      <div class="sky-body">
+        <div class="ring-wrap">
+          <svg viewBox="0 0 220 220" aria-hidden="true"><circle class="track" cx="110" cy="110" r="94"/><circle class="prog" id="ringProg" cx="110" cy="110" r="94"/></svg>
+          <div class="ring-in" role="timer" aria-live="off">
+            <span class="lbl" id="nextLabel">Prochaine prière</span>
+            <span class="nm-ar" id="nextAr" lang="ar">—</span>
+            <span class="nm-fr" id="nextFr">&nbsp;</span>
+            <span class="count" id="countdown">--:--:--</span>
+            <span class="at" id="nextAt">&nbsp;</span>
+          </div>
+        </div>
+        <ol class="plist" id="plist"></ol>
+      </div>
+    </div>
+
+    <div class="lower">
+      <section class="streak" aria-label="Ma régularité">
+        <h2>Prières faites à l'heure</h2>
+        <div class="streak-n"><b id="streakN">0</b><span id="streakLbl">jour de suite</span></div>
+        <div class="dots" id="todayDots" aria-hidden="true"></div>
+        <p class="msg" id="streakMsg"></p>
+        <div class="week" id="week" aria-hidden="true"></div>
+        <div class="badges" id="badges"></div>
+      </section>
+      <section class="vod" aria-label="Verset du jour">
+        <h2>Verset du jour</h2>
+        <p class="ar" id="vodAr" lang="ar" dir="rtl"></p>
+        <p class="fr" id="vodFr"></p>
+        <div class="ref" id="vodRef"></div>
+      </section>
+    </section>
+
+  <!-- CORAN -->
+  <section id="view-coran" class="view" aria-label="Coran">
+    <div id="quranHub">
+      <div class="section-head">
+        <div>
+          <h1 class="page-title">Le Noble Coran</h1>
+          <p class="page-sub">Choisis une sourate à lire comme un vrai mushaf, ou un récitateur à écouter.</p>
+        </div>
+      </div>
+      <div class="qtabs" role="tablist">
+        <button class="qtab" data-tab="sourates" role="tab" aria-selected="false"><svg class="ic"><use href="#i-book"/></svg>Sourates</button>
+        <button class="qtab" data-tab="recitateurs" role="tab" aria-selected="false"><svg class="ic"><use href="#i-users"/></svg>Récitateurs</button>
+        <button class="qtab" data-tab="marque-pages" role="tab" aria-selected="false"><svg class="ic"><use href="#i-mark"/></svg>Marque-pages</button>
+      </div>
+      <div class="qpanel" id="tabSourates">
+        <div class="resume" id="resumeCard" hidden>
+          <div class="t"><small id="resumeLbl">Reprendre où tu t'es arrêté</small><b id="resumeTxt"></b></div>
+          <button class="btn primary" id="resumeBtn">Reprendre</button>
+        </div>
+        <div class="search">
+          <svg class="ic"><use href="#i-search"/></svg>
+          <label class="sr" for="q">Chercher une sourate</label>
+          <input id="q" type="search" placeholder="Chercher une sourate : nom, numéro ou en arabe" autocomplete="off">
+        </div>
+        <div class="surah-grid" id="surahGrid"></div>
+        <p class="empty" id="noSurah" hidden>Aucune sourate ne correspond.</p>
+      </div>
+      <div class="qpanel" id="tabRecitateurs" hidden>
+        <p class="page-sub" style="margin:-6px 0 18px">Chaque récitateur a enregistré le Coran complet, sourate par sourate.</p>
+        <div class="rec-filters" id="recFilters"></div>
+          <div class="rec-grid" id="recGrid"></div>
+      </div>
+      <div class="qpanel" id="tabMarques" hidden>
+        <p class="empty" id="bmEmpty" hidden>Touche l'icône marque-page pendant ta lecture pour retrouver un verset ici.</p>
+        <div class="bm-list" id="bmList"></div>
+      </div>
+    </div>
+
+    <div id="recProfile" hidden>
+      <div class="rec-hero" id="recHero">
+        <div class="rec-bar">
+          <button class="icon-btn" id="recBack" aria-label="Retour"><svg class="ic"><use href="#i-left"/></svg></button>
+          <button class="icon-btn" id="recDlAll" aria-label="Télécharger"><svg class="ic"><use href="#i-download"/></svg></button>
+        </div>
+        <div class="rec-portrait">
+          <span class="avatar xxl" id="recAvatar"><b></b></span>
+          <p class="rec-name"><span id="recName"></span><span class="vbadge" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></span></p>
+          <p class="rec-country"><i aria-hidden="true"></i><span id="recCountry"></span></p>
+        </div>
+        <div class="rec-actions">
+          <button class="rec-round" id="recShare" aria-label="Partager"><svg class="ic"><use href="#i-share"/></svg></button>
+          <button class="btn primary" id="recPlayAll"><svg class="ic"><use href="#i-play"/></svg>Écouter</button>
+          <button class="rec-round" id="recFav" aria-pressed="false" aria-label="Favori"><svg class="ic"><use href="#i-star"/></svg></button>
+        </div>
+        <p class="rec-bio" id="recBio"></p>
+        <p class="rec-stats"><svg class="ic"><use href="#i-headphones"/></svg><span id="recStats"></span></p>
+      </div>
+      <div class="rec-list-head"><h2>Les 114 sourates</h2><span>Touche une sourate pour l'écouter</span></div>
+      <ol class="rec-surahs" id="recSurahs"></ol>
+    </div>
+
+    <div id="quranMushaf" hidden>
+      <div class="mus-top">
+        <button class="icon-btn" id="musBack" aria-label="Retour"><svg class="ic"><use href="#i-left"/></svg></button>
+        <div class="mus-title"><b id="musSurah"></b><small id="musJuz"></small></div>
+        <label class="switch"><input type="checkbox" id="musTrToggle"><span class="tr"></span>Traduction</label>
+        <div class="fs" role="group"><button id="musMinus">A−</button><button id="musPlus">A+</button></div>
+      </div>
+      <div class="mus-stage">
+        <button class="mus-arrow prev" id="musPrevBtn" aria-label="Page précédente"><svg class="ic"><use href="#i-right"/></svg></button>
+        <div class="mus-page" id="musPage" tabindex="-1"></div>
+        <button class="mus-arrow next" id="musNextBtn" aria-label="Page suivante"><svg class="ic"><use href="#i-left"/></svg></button>
+      </div>
+      <div class="mus-foot">
+        <button class="chip" id="musJumpBtn">Aller à une page</button>
+        <span class="mus-pagenum" id="musPageNum"></span>
+      </div>
+    </div>
+
+    <div id="quranLecteur" hidden>
+      <div class="lec-top">
+        <button class="icon-btn" id="lecBack" aria-label="Retour"><svg class="ic"><use href="#i-left"/></svg></button>
+        <span>Écoute</span>
+        <button class="icon-btn" id="lecMark" aria-label="Marquer"><svg class="ic"><use href="#i-mark"/></svg></button>
+      </div>
+      <div class="lec-art">
+        <span class="avatar xxl" id="lecAvatar"><b></b></span>
+        <div class="lec-waveform" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="lec-info">
+        <b class="ar" id="lecSurahAr" lang="ar"></b>
+        <span id="lecSurahFr"></span>
+        <p id="lecVerse"></p>
+      </div>
+        <div class="lec-lyrics" id="lecLyrics" hidden>
+          <span class="ref" id="lecLyricsRef">Verset 1</span>
+          <p class="ar" id="lecLyricsAr" lang="ar" dir="rtl"></p>
+          <p class="fr" id="lecLyricsFr"></p>
+        </div>
+
+      <!-- Panneau verset actuel (Phase 5.1) -->
+      <div class="lec-verse-panel" id="lecVersePanel" hidden>
+        <div class="lvp-header">
+          <span class="lvp-badge" id="lvpBadge">Verset 1</span>
+          <button class="lvp-close" id="lvpClose" aria-label="Masquer"><svg class="ic"><use href="#i-close"/></svg></button>
+        </div>
+        <p class="lvp-ar" id="lvpAr" lang="ar" dir="rtl"></p>
+        <p class="lvp-fr" id="lvpFr"></p>
+      </div>
+
+      <!-- Boutons de répétition (Phase 5.1) -->
+      <div class="lec-repeat-row" id="lecRepeatRow">
+        <button class="repeat-btn" data-repeat="1" aria-label="Une fois"><svg class="ic"><use href="#i-play"/></svg><span>1×</span></button>
+        <button class="repeat-btn" data-repeat="3" aria-label="Trois fois"><svg class="ic"><use href="#i-play"/></svg><span>3×</span></button>
+        <button class="repeat-btn" data-repeat="5" aria-label="Cinq fois"><svg class="ic"><use href="#i-play"/></svg><span>5×</span></button>
+        <button class="repeat-btn" data-repeat="infinite" aria-label="Boucle"><svg class="ic"><use href="#i-refresh"/></svg><span>∞</span></button>
+      </div>
+
+      <div class="lec-progress" id="lecProgress"><i id="lecFill"></i></div>
+      <div class="lec-times"><span id="lecTimeCur">0:00</span><span id="lecTimeTotal">--:--</span></div>
+      <div class="lec-controls">
+        <button class="pl-speed" id="lecSpeed">1×</button>
+        <button class="icon-btn big" id="lecPrev" aria-label="Verset précédent"><svg class="ic"><use href="#i-prev"/></svg></button>
+        <button class="pl-play big" id="lecPlay" aria-label="Lecture ou pause"><svg class="ic"><use href="#i-play" id="lecPlayIc"/></svg></button>
+        <button class="icon-btn big" id="lecNext" aria-label="Verset suivant"><svg class="ic"><use href="#i-next"/></svg></button>
+        <button class="icon-btn" id="lecRead" aria-label="Lire dans le mushaf"><svg class="ic"><use href="#i-book"/></svg></button>
+        <button class="icon-btn" id="lecHifz" aria-label="Mode mémorisation" title="Mode mémorisation (Hifz)"><svg class="ic"><use href="#i-brain"/></svg></button>
+      </div>
+      <p class="lec-pick-lbl">Changer de récitateur</p>
+      <div class="lec-reciters" id="lecReciters"></div>
+
+      </section>
+
+  <!-- QIBLA -->
+  <section id="view-qibla" class="view" aria-label="Qibla">
+    <div class="section-head">
+      <div>
+        <h1 class="page-title">Direction de la Qibla</h1>
+        <p class="page-sub">Oriente ton téléphone vers La Mecque</p>
+      </div>
+    </div>
+    <div class="qibla-stage">
+      <div class="qibla-compass" id="qiblaCompass">
+        <div class="qibla-dial">
+          <div class="qibla-dial-n">N</div>
+          <div class="qibla-dial-e">E</div>
+          <div class="qibla-dial-s">S</div>
+          <div class="qibla-dial-o">O</div>
+        </div>
+        <div class="qibla-needle" id="qiblaNeedle">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L16 12 L12 22 L8 12 Z" fill="#e6bd63"/></svg>
+        </div>
+        <div class="qibla-kaaba" id="qiblaKaaba">
+          <svg viewBox="0 0 40 40"><rect x="8" y="12" width="24" height="20" rx="2" fill="#0a0a0a"/><rect x="8" y="12" width="24" height="4" fill="#e6bd63"/><rect x="17" y="22" width="6" height="10" fill="#1a1a1a"/></svg>
+        </div>
+      </div>
+      <div class="qibla-info">
+        <div class="qibla-angle"><b id="qiblaAngle">--</b><span>°</span></div>
+        <p class="qibla-desc" id="qiblaDesc">Active le capteur d'orientation de ton appareil</p>
+        <button class="btn primary" id="qiblaEnable"><svg class="ic"><use href="#i-compass"/></svg>Activer la boussole</button>
+      </div>
+      <div class="qibla-times">
+        <h2>Horaires détaillés</h2>
+        <div class="qibla-times-grid">
+          <div class="qibla-time"><span class="qt-label">Imsak</span><b class="qt-val" id="qtImsak">--:--</b></div>
+          <div class="qibla-time"><span class="qt-label">Dernier tiers</span><b class="qt-val" id="qtLastThird">--:--</b></div>
+          <div class="qibla-time"><span class="qt-label">Milieu de nuit</span><b class="qt-val" id="qtMidnight">--:--</b></div>
+          <div class="qibla-time"><span class="qt-label">Fin de nuit</span><b class="qt-val" id="qtLastNight">--:--</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOUAS -->
+  <section id="view-douas" class="view" aria-label="Douas et invocations">
+    <div class="section-head">
+      <div>
+        <h1 class="page-title">Douas & Invocations</h1>
+        <p class="page-sub">Invocations authentiques de la Sunnah pour chaque moment de la journée</p>
+      </div>
+    </div>
+
+    <!-- Filtres par catégorie -->
+    <div class="douas-filters" id="douasFilters">
+      <button class="doua-filter active" data-category="all">Toutes</button>
+    </div>
+
+    <!-- Barre de recherche -->
+    <div class="search douas-search">
+      <svg class="ic"><use href="#i-search"/></svg>
+      <label class="sr" for="douasSearch">Chercher une doua</label>
+      <input id="douasSearch" type="search" placeholder="Chercher une doua par titre ou contenu..." autocomplete="off">
+    </div>
+
+    <!-- Liste des douas -->
+    <div class="douas-list" id="douasList">
+      <div class="loading"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
+    </div>
+    <p class="empty" id="noDouas" hidden>Aucune doua ne correspond à ta recherche.</p>
+
+    <!-- Bouton aléatoire -->
+    <div class="douas-random">
+      <button class="btn primary" id="douasRandomBtn">
+        🎲 Doua aléatoire
+      </button>
+    </div>
+  </section>
+
+  <!-- CALENDRIER -->
+  <section id="view-calendrier" class="view" aria-label="Calendrier">
+    <div class="section-head">
+      <div>
+        <h1 class="page-title">Calendrier hégirien et grégorien</h1>
+        <p class="page-sub">Chaque case affiche la date du jour dans les deux calendriers.</p>
+      </div>
+    </div>
+    <div class="cal-layout">
+      <div>
+        <div class="cal-head">
+          <button class="icon-btn" id="calPrev" aria-label="Mois précédent"><svg class="ic"><use href="#i-left"/></svg></button>
+          <div class="cal-title"><div class="ar" id="calAr" lang="ar" dir="rtl"></div><h2 id="calFr"></h2></div>
+          <button class="btn" id="calToday">Aujourd'hui</button>
+          <button class="icon-btn" id="calNext" aria-label="Mois suivant"><svg class="ic"><use href="#i-right"/></svg></button>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+      </div>
+      <aside class="detail" id="detail" aria-live="polite"></aside>
+    </div>
+  </section>
+
+  <!-- PAGE AIDE / À PROPOS / CONTACT -->
+  <section id="view-aide" class="view" aria-label="Aide et à propos">
+    <div class="section-head">
+      <div>
+        <h1 class="page-title">À propos de Wakti</h1>
+        <p class="page-sub">Tout ce qu'il faut savoir sur l'application</p>
+      </div>
+    </div>
+
+    <div class="aide-layout">
+      <!-- Mission -->
+      <article class="aide-card">
+        <h2>🎯 Notre mission</h2>
+        <p>Wakti est une application <strong>100% gratuite</strong>, sans publicité, conçue pour aider les musulmans à pratiquer leur religion au quotidien.</p>
+        <p>Horaires de prière, adhan automatique, Coran complet, calendrier hégirien, Qibla, Wird et Hifz — tout dans une seule app, sur tous tes appareils.</p>
+      </article>
+
+      <!-- Comment utiliser -->
+      <article class="aide-card">
+        <h2>📖 Comment utiliser Wakti</h2>
+        <ol class="aide-steps">
+          <li><b>Choisis ta ville</b> — pour des horaires de prière précis</li>
+          <li><b>Active les notifications</b> — pour l'adhan automatique</li>
+          <li><b>Écoute et lis le Coran</b> — 12 récitateurs + mode Hifz</li>
+          <li><b>Suis ton Wird</b> — objectifs quotidiens</li>
+          <li><b>Utilise la Qibla</b> — boussole vers La Mecque</li>
+        </ol>
+      </article>
+
+      <!-- FAQ -->
+      <article class="aide-card">
+        <h2>❓ Questions fréquentes</h2>
+        <details>
+          <summary>Wakti est-il vraiment gratuit ?</summary>
+          <p>Oui, 100% gratuit, sans publicité et sans abonnement. Tu peux utiliser toutes les fonctionnalités sans payer.</p>
+        </details>
+        <details>
+          <summary>Mes données sont-elles privées ?</summary>
+          <p>Oui. Tes données (marque-pages, Wird, progression Hifz) restent sur ton appareil ou sur ton compte Supabase privé. <strong>Aucune donnée n'est partagée avec des tiers.</strong></p>
+        </details>
+        <details>
+          <summary>Wakti fonctionne-t-il hors ligne ?</summary>
+          <p>Oui, la plupart des fonctionnalités marchent sans connexion Internet (horaires déjà chargés, Coran en cache, Wird, Qibla).</p>
+        </details>
+        <details>
+          <summary>Comment activer l'adhan automatique ?</summary>
+          <p>Va dans les Réglages (⚙️ en haut à droite), active "Adhan à l'heure de la prière" et autorise les notifications. L'adhan sonnera automatiquement.</p>
+        </details>
+        <details>
+          <summary>Puis-je utiliser Wakti sur plusieurs appareils ?</summary>
+          <p>Oui ! Crée un compte (Google, GitHub ou Discord) et connecte-toi sur chaque appareil. Tes données se synchronisent automatiquement.</p>
+        </details>
+        <details>
+          <summary>Puis-je choisir mon récitateur préféré ?</summary>
+          <p>Oui, tu as le choix entre 12 récitateurs (Alafasy, Husary, Abdul Basit, Minshawi...) avec lecture verset par verset et mode Hifz pour la mémorisation.</p>
+        </details>
+      </article>
+
+      <!-- Contact -->
+      <article class="aide-card aide-contact">
+        <h2>📧 Contact</h2>
+        <p>Une question, une suggestion, un bug à signaler ?</p>
+        <div class="contact-links">
+          <a href="mailto:contact@wakti.app" class="contact-btn">
+            <svg class="ic"><use href="#i-share"/></svg>
+            <span>contact@wakti.app</span>
+          </a>
+          <a href="mailto:contact@wakti.app?subject=Bug%20report%20Wakti" class="contact-btn">
+            <svg class="ic"><use href="#i-close"/></svg>
+            <span>Signaler un bug</span>
+          </a>
+          <a href="mailto:contact@wakti.app?subject=Suggestion%20Wakti" class="contact-btn">
+            <svg class="ic"><use href="#i-star"/></svg>
+            <span>Proposer une idée</span>
+          </a>
+        </div>
+        <p class="aide-note">Nous répondons généralement dans les 48h.</p>
+      </article>
+
+      <!-- À propos -->
+      <article class="aide-card">
+        <h2>ℹ️ À propos</h2>
+        <p><strong>Wakti</strong> (وَقْتِي en arabe, "mon temps") est une application web progressive (PWA) développée avec ❤️ pour la communauté musulmane.</p>
+        <p>Elle est disponible sur tous les appareils : ordinateur, tablette, smartphone. Tu peux l'installer sur ton écran d'accueil pour l'utiliser comme une app native.</p>
+        <p class="aide-version"><b>Version</b> : 1.0 · <b>Dernière mise à jour</b> : Octobre 2026</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- SECTION CARACTÉRISTIQUES OBJECTIVES -->
+  <section class="features-highlight" aria-label="Pourquoi choisir Wakti">
+    <h2>✨ Pourquoi choisir Wakti ?</h2>
+    <p class="section-sub">Des engagements concrets, vérifiables et sans compromis.</p>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>100% gratuit</h3>
+        <p>Aucun abonnement, aucune carte bancaire, aucune publicité. Pour toujours.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Données privées</h3>
+        <p>Tes données restent sur ton appareil ou sur ton compte privé. Aucun partage avec des tiers.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">📴</div>
+        <h3>Fonctionne hors ligne</h3>
+        <p>Pas de connexion Internet ? Pas de problème. Wakti marche quand même.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Tous tes appareils</h3>
+        <p>Ordinateur, tablette, smartphone. Installe Wakti sur ton écran d'accueil.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🕌</div>
+        <h3>Adhan automatique</h3>
+        <p>Notification et adhan à chaque prière, sans que tu aies besoin d'ouvrir l'app.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">📖</div>
+        <h3>Coran complet</h3>
+        <p>114 sourates · 12 récitateurs · Mode Hifz pour la mémorisation · Traductions.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>Partout dans le monde</h3>
+        <p>Horaires de prière calculés avec précision pour n'importe quelle ville.</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">❤️</div>
+        <h3>Fait avec soin</h3>
+        <p>Développé bénévolement pour la communauté musulmane. Sans but lucratif.</p>
+      </div>
+    </div>
+
+    <!-- Zone de témoignages réels (dynamique, chargé depuis Supabase) -->
+    <div class="testimonials-live" id="testimonials-live" hidden>
+      <h3>💬 Ce que disent nos utilisateurs</h3>
+      <div id="testimonialsCount"></div>
+      <div class="testimonials" id="testimonials-container"></div>
+    </div>
+
+    <!-- Appel à témoignage (formulaire) -->
+    <div class="testimonials-cta">
+      <p>💡 <b>Tu utilises Wakti ?</b> Partage ton expérience et aide-nous à améliorer l'app.</p>
+      <button class="btn primary" id="openTestimonialForm" type="button">
+        ✍️ Écrire mon témoignage
+      </button>
+    </div>
+  </section>
+
+  <!-- DIALOGUE : Formulaire de témoignage -->
+  <dialog id="testimonialDialog" class="testimonial-dlg">
+    <div class="testimonial-form-wrap">
+      <button class="testimonial-close" id="testimonialClose" aria-label="Fermer">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+
+      <div class="testimonial-header">
+        <div class="testimonial-emoji">💬</div>
+        <h2>Partage ton expérience</h2>
+        <p>Ton témoignage aidera d'autres musulmans à découvrir Wakti, in sha Allah.</p>
+      </div>
+
+      <form id="testimonialForm" class="testimonial-form">
+        <div class="testimonial-field">
+          <label for="tName">Ton prénom *</label>
+          <input type="text" id="tName" placeholder="Ex. Ahmed" required minlength="2" maxlength="50" autocomplete="given-name">
+        </div>
+
+        <div class="testimonial-field">
+          <label for="tCity">Ta ville (optionnel)</label>
+          <input type="text" id="tCity" placeholder="Ex. Tunis" maxlength="50" autocomplete="address-level2">
+        </div>
+
+        <div class="testimonial-field">
+          <label for="tRating">Ta note</label>
+          <div class="rating-input" id="ratingInput">
+            <button type="button" class="star-btn" data-rating="1" aria-label="1 étoile">★</button>
+            <button type="button" class="star-btn" data-rating="2" aria-label="2 étoiles">★</button>
+            <button type="button" class="star-btn" data-rating="3" aria-label="3 étoiles">★</button>
+            <button type="button" class="star-btn" data-rating="4" aria-label="4 étoiles">★</button>
+            <button type="button" class="star-btn active" data-rating="5" aria-label="5 étoiles">★</button>
+          </div>
+          <input type="hidden" id="tRating" value="5">
+        </div>
+
+        <div class="testimonial-field">
+          <label for="tMessage">Ton témoignage *</label>
+          <textarea id="tMessage" placeholder="Comment Wakti t'aide dans ta pratique quotidienne ? (10 à 500 caractères)" required minlength="10" maxlength="500" rows="4"></textarea>
+          <div class="char-counter"><span id="tCharCount">0</span> / 500 caractères</div>
+        </div>
+
+        <p class="testimonial-hint" id="testimonialHint"></p>
+
+        <div class="testimonial-actions">
+          <button type="button" class="btn" id="testimonialCancel">Annuler</button>
+          <button type="submit" class="btn primary" id="testimonialSubmit">
+            <svg class="ic"><use href="#i-check"/></svg>
+            Envoyer
+          </button>
+        </div>
+
+        <p class="testimonial-legal">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+          Ton témoignage sera <strong>modéré</strong> avant publication. Il sera visible publiquement avec ton prénom et ta ville (si fournie).
+        </p>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- FOOTER ENRICHI -->
+  <footer class="footer-rich">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <svg viewBox="0 0 40 40" width="32" height="32" aria-hidden="true"><defs><linearGradient id="lgFooter" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6dc95"/><stop offset="1" stop-color="#c8963a"/></linearGradient><mask id="cmFooter"><rect width="40" height="40" fill="#fff"/><circle cx="24" cy="15" r="11" fill="#000"/></mask></defs><circle cx="18" cy="21" r="14" fill="url(#lgFooter)" mask="url(#cmFooter)"/><path d="M29 7.5l1.7 3.6 3.9.5-2.9 2.7.8 3.9-3.5-1.9-3.5 1.9.8-3.9-2.9-2.7 3.9-.5z" fill="url(#lgFooter)"/></svg>
+          <b>Wakti</b>
+        </div>
+        <p>Ton temps, ta prière, ton Coran.</p>
+        <p class="footer-made">Fait avec ❤️ pour la communauté musulmane</p>
+        <p class="footer-made"><a href="mailto:contact@wakti.app?subject=T%C3%A9moignage" style="color:var(--gold)">✍️ Partage ton témoignage</a></p>
+      </div>
+      <div class="footer-col">
+        <b>Application</b>
+        <a href="#/prieres">Prières</a>
+        <a href="#/coran">Coran</a>
+        <a href="#/calendrier">Calendrier</a>
+        <a href="#/qibla">Qibla</a>
+        <a href="#/wird">Wird</a>
+      </div>
+      <div class="footer-col">
+        <b>Aide</b>
+        <a href="#/aide">À propos</a>
+        <a href="#/aide">FAQ</a>
+        <a href="#/aide">Comment utiliser</a>
+        <a href="mailto:contact@wakti.app">Contact</a>
+      </div>
+      <div class="footer-col">
+        <b>Légal</b>
+        <a href="#/aide">Confidentialité</a>
+        <a href="#/aide">Conditions d'utilisation</a>
+        <a href="mailto:contact@wakti.app?subject=Bug%20report">Signaler un bug</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Wakti. Tous droits réservés.</span>
+      <span>Données : AlQuran Cloud, MP3Quran, EveryAyah et Aladhan.</span>
+    </div>
+  </footer>
+</main>
+
+<div class="player" id="player" hidden>
+  <button class="pl-info" id="plInfoBtn" aria-label="Ouvrir le lecteur">
+    <span class="avatar sm" id="plAvatar"><b></b><span class="eq" id="plEq"><i></i><i></i><i></i><i></i></span></span>
+    <span class="pl-text"><span class="pl-title" id="plTitle"></span><span class="pl-sub" id="plSub"></span></span>
+  </button>
+  <button class="icon-btn" id="plPrev" aria-label="Verset précédent"><svg class="ic"><use href="#i-prev"/></svg></button>
+  <button class="pl-play" id="plPlay" aria-label="Lecture"><svg class="ic"><use href="#i-play" id="plPlayIc"/></svg></button>
+  <button class="icon-btn" id="plNext" aria-label="Verset suivant"><svg class="ic"><use href="#i-next"/></svg></button>
+  <button class="pl-speed" id="plSpeed">1×</button>
+  <button class="icon-btn" id="plClose" aria-label="Fermer"><svg class="ic"><use href="#i-close"/></svg></button>
+  <div class="pl-bar" id="plBar"><i id="plFill"></i></div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Dialogue position -->
+<dialog id="dlgLoc" aria-labelledby="dlgLocT">
+  <div class="dlg">
+    <div class="dlg-head"><h2 id="dlgLocT">Où pries-tu ?</h2><button class="icon-btn" data-close aria-label="Fermer"><svg class="ic"><use href="#i-close"/></svg></button></div>
+    <button class="btn primary" id="geoBtn" style="width:100%"><svg class="ic"><use href="#i-locate"/></svg>Utiliser ma position</button>
+    <p class="hint" style="color:var(--muted);font-size:.85rem;margin:8px 0 18px">Ta position reste dans ton navigateur.</p>
+    <div class="field"><span class="lab">Villes rapides</span><div class="quick" id="quickCities"></div></div>
+    <form id="cityForm">
+      <div class="row2">
+        <div class="field"><label for="cityIn">Ville</label><input id="cityIn" type="text" placeholder="Ex. Lyon" required></div>
+        <div class="field"><label for="countryIn">Pays</label><select id="countryIn"></select></div>
+      </div>
+      <button class="btn" type="submit" style="width:100%">Afficher les horaires</button>
+    </form>
+  </div>
+</dialog>
+
+<!-- Dialogue choix lire/ecouter -->
+<dialog id="dlgChoice" aria-labelledby="dlgChoiceT">
+  <div class="dlg">
+    <div class="dlg-head"><h2 id="dlgChoiceT">Sourate</h2><button class="icon-btn" data-close aria-label="Fermer"><svg class="ic"><use href="#i-close"/></svg></button></div>
+    <p class="hint" id="chSubtitle" style="color:var(--muted);margin:-8px 0 18px"></p>
+    <div class="choice-grid">
+      <button class="choice-card" id="chRead"><svg class="ic"><use href="#i-book"/></svg><b>Lire</b><small>Comme un vrai mushaf, page par page</small></button>
+      <button class="choice-card" id="chListen"><svg class="ic"><use href="#i-headphones"/></svg><b>Écouter</b><small>Choisis un récitateur et lance l'écoute</small></button>
+    </div>
+  </div>
+</dialog>
+
+<!-- Dialogue reglages -->
+<dialog id="dlgSet" aria-labelledby="dlgSetT">
+  <div class="dlg">
+    <div class="dlg-head"><h2 id="dlgSetT">Réglages</h2><button class="icon-btn" data-close aria-label="Fermer"><svg class="ic"><use href="#i-close"/></svg></button></div>
+    <div class="field"><label for="methodSel">Méthode de calcul des prières</label><select id="methodSel"></select><span class="hint">Choisis celle de ta mosquée ou de ton pays.</span></div>
+    <div class="field"><label for="schoolSel">Calcul de l'Asr</label><select id="schoolSel"><option value="0">Standard</option><option value="1">Hanafite</option></select></div>
+    <div class="field"><label for="hAdjSel">Ajustement de la date hégirienne</label><select id="hAdjSel"><option value="-2">−2 jours</option><option value="-1">−1 jour</option><option value="0">Aucun</option><option value="1">+1 jour</option><option value="2">+2 jours</option></select></div>
+    <div class="sw-row">
+      <div>Adhan à l'heure de la prière<small>Jouer l'adhan quand une prière commence.</small></div>
+      <label class="switch"><input type="checkbox" id="adhanSw" checked><span class="tr"></span><span class="sr">Activer</span></label>
+    </div>
+    <div class="sw-row"><div>Rappel à l'heure de la prière<small>Notification push quand une prière commence.</small></div><label class="switch"><input type="checkbox" id="notifSw"><span class="tr"></span><span class="sr">Activer</span></label></div>
+    <div class="sw-row plain"><div>Enchaîner la sourate suivante<small>Quand une sourate se termine, la suivante démarre.</small></div><label class="switch"><input type="checkbox" id="autoSw"><span class="tr"></span><span class="sr">Activer</span></label></div>
+    <div class="sw-row plain" style="border-top:1px solid var(--line);padding-top:16px;margin-top:8px">
+      <div>Mode mosquée<small>Affiche les horaires en grand.</small></div>
+      <button class="btn" id="openMosqueBtn" style="flex:none"><svg class="ic"><use href="#i-cal"/></svg>Ouvrir</button>
+    </div>
+  
+    <div class="field" style="border-top:1px solid var(--line);padding-top:16px;margin-top:12px">
+      <span class="lab">Ambiance visuelle</span>
+      <div class="theme-selector" id="themeSelector">
+        <button class="theme-option" data-theme="dark" aria-label="Theme sombre">
+          <span class="theme-preview dark"></span>
+          <span class="label">Sombre</span>
+        </button>
+        <button class="theme-option" data-theme="light" aria-label="Theme clair">
+          <span class="theme-preview light"></span>
+          <span class="label">Clair</span>
+        </button>
+        <button class="theme-option" data-theme="sabah" aria-label="Theme aube">
+          <span class="theme-preview sabah"></span>
+          <span class="label">Sabah</span>
+        </button>
+        <button class="theme-option" data-theme="layl" aria-label="Theme nuit">
+          <span class="theme-preview layl"></span>
+          <span class="label">Layl</span>
+        </button>
+      </div>
+      <span class="hint">Sabah = ambiance aube creme. Layl = nuit profonde.</span>
+    </div>
+</div>
+</dialog>
+
+<!-- Dialogue onboarding -->
+<dialog id="onboarding" class="onboarding-dlg">
+  <div class="ob-stage">
+    <section class="ob-screen" data-screen="1">
+      <div class="ob-ill">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <defs><linearGradient id="obGrad1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6dc95"/><stop offset="1" stop-color="#c8963a"/></linearGradient></defs>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="url(#obGrad1)" stroke-width="2" opacity="0.3"/>
+          <circle cx="55" cy="62" r="28" fill="url(#obGrad1)"/>
+          <circle cx="70" cy="52" r="22" fill="#04201c"/>
+          <path d="M88 30l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z" fill="url(#obGrad1)"/>
+        </svg>
+      </div>
+      <h2 class="ob-title" lang="ar">وَقْتِي</h2>
+      <p class="ob-subtitle">Wakti</p>
+      <p class="ob-desc">Ton compagnon spirituel :<br><b>Coran · Prières · Calendrier</b></p>
+    </section>
+    <section class="ob-screen" data-screen="2" hidden>
+      <div class="ob-ill">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#e6bd63" stroke-width="2" opacity="0.3"/>
+          <path d="M60 100s22-20 22-40a22 22 0 10-44 0c0 20 22 40 22 40z" fill="#e6bd63" opacity="0.9"/>
+          <circle cx="60" cy="58" r="8" fill="#04201c"/>
+        </svg>
+      </div>
+      <h2 class="ob-title">Où pries-tu ?</h2>
+      <p class="ob-desc">Pour calculer <b>les horaires exacts</b> de ta ville, Wakti a besoin de ta position.</p>
+      <p class="ob-privacy"><svg class="ic" width="14" height="14"><use href="#i-lock"/></svg>Ta position reste sur ton appareil. Rien n'est envoyé à un serveur.</p>
+      <button class="btn primary ob-btn" id="obGeo"><svg class="ic"><use href="#i-locate"/></svg>Utiliser ma position</button>
+      <button class="btn ob-btn" id="obManual">Choisir ma ville manuellement</button>
+    </section>
+    <section class="ob-screen" data-screen="3" hidden>
+      <div class="ob-ill">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#e6bd63" stroke-width="2" opacity="0.3"/>
+          <path d="M60 35a15 15 0 00-15 15v15l-5 5h40l-5-5V50a15 15 0 00-15-15z" fill="#e6bd63"/>
+          <circle cx="60" cy="78" r="4" fill="#04201c"/>
+        </svg>
+      </div>
+      <h2 class="ob-title">Sois rappelé à l'heure</h2>
+      <p class="ob-desc">Wakti peut t'envoyer une <b>notification douce</b> à l'entrée de chaque prière.</p>
+      <button class="btn primary ob-btn" id="obNotif"><svg class="ic"><use href="#i-check"/></svg>Activer les rappels</button>
+      <button class="btn ob-btn" id="obSkipNotif">Plus tard</button>
+    </section>
+    <div class="ob-dots" role="tablist">
+      <button class="ob-dot active" data-dot="1" aria-label="Étape 1"></button>
+      <button class="ob-dot" data-dot="2" aria-label="Étape 2"></button>
+      <button class="ob-dot" data-dot="3" aria-label="Étape 3"></button>
+    </div>
+    <button class="ob-skip" id="obSkip" aria-label="Passer">Passer</button>
+  </div>
+</dialog>
+
+<!-- Panneau tafsir -->
+<div class="tafsir-panel" id="tafsirPanel" hidden>
+  <div class="tafsir-backdrop" id="tafsirBackdrop"></div>
+  <div class="tafsir-content">
+    <div class="tafsir-head">
+      <div class="tafsir-title"><b id="tafsirRef">2:255</b><small>Tafsir Al-Muyassar</small></div>
+      <button class="icon-btn" id="tafsirClose" aria-label="Fermer"><svg class="ic"><use href="#i-close"/></svg></button>
+    </div>
+    <div class="tafsir-body"><p class="tafsir-ar" id="tafsirAr" lang="ar" dir="rtl"></p></div>
+  </div>
+</div>
+
+<!-- Mode mosquée -->
+<div class="mosque-mode" id="mosqueMode" hidden>
+  <div class="mosque-head">
+    <div class="mosque-loc" id="mosqueLoc">Ma position</div>
+    <button class="icon-btn" id="mosqueClose" aria-label="Fermer"><svg class="ic"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="mosque-clock" id="mosqueClock">--:--:--</div>
+  <div class="mosque-date" id="mosqueDate"></div>
+  <div class="mosque-next">
+    <div class="mosque-next-label">Prochaine prière</div>
+    <div class="mosque-next-name" id="mosqueNextName">--</div>
+    <div class="mosque-next-time" id="mosqueNextTime">--:--</div>
+  </div>
+  <div class="mosque-list" id="mosqueList"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/push.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/app.js"></script>
+<script>
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => {});
+    });
+  }
+</script>
+
+<!-- Mode Hifz (overlay) -->
+      <div class="hifz-overlay" id="hifzOverlay" hidden>
+        <div class="hifz-top">
+          <button class="icon-btn" id="hifzClose" aria-label="Fermer"><svg class="ic"><use href="#i-close"/></svg></button>
+          <div class="hifz-progress-info">
+            <span class="hifz-surah" id="hifzSurah">Sourate</span>
+            <span class="hifz-progress-text" id="hifzProgressText">Verset 1 sur 7</span>
+          </div>
+          <button class="icon-btn" id="hifzMarkLearned" aria-label="Marquer comme appris"><svg class="ic"><use href="#i-check"/></svg></button>
+        </div>
+        <div class="hifz-bar"><div class="hifz-bar-fill" id="hifzBarFill"></div></div>
+        <div class="hifz-content" id="hifzContent">
+          <div class="hifz-ar" id="hifzAr" lang="ar" dir="rtl"></div>
+          <div class="hifz-fr" id="hifzFr"></div>
+        </div>
+        <div class="hifz-levels" id="hifzLevels">
+          <button class="hifz-level" data-level="easy"><span class="hifz-level-icon">👁️</span><span>Facile</span><small>Tout visible</small></button>
+          <button class="hifz-level active" data-level="medium"><span class="hifz-level-icon">👁️‍🗨️</span><span>Moyen</span><small>Mots masqués</small></button>
+          <button class="hifz-level" data-level="hard"><span class="hifz-level-icon">🚫</span><span>Difficile</span><small>Tout masqué</small></button>
+        </div>
+        <div class="hifz-actions">
+          <button class="btn hifz-btn-secondary" id="hifzReveal"><svg class="ic"><use href="#i-eye"/></svg><span>Vérifier</span></button>
+          <button class="btn primary hifz-btn-primary" id="hifzNext"><span>Suivant</span><svg class="ic"><use href="#i-right"/></svg></button>
+        </div>
+        <div class="hifz-learned-badge" id="hifzLearnedBadge" hidden><svg class="ic"><use href="#i-check"/></svg><span>Appris</span></div>
+      </div>
+
+</body>
+</html>
