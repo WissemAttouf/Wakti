@@ -1,172 +1,93 @@
-# Wakti — Quran, Prayer Times & Hijri Calendar
+# Wakti — Coran, horaires de prière et calendrier hégirien
+
+**Wakti (وقتي)** est une application web progressive (PWA) qui réunit la lecture et l’écoute du Coran, les horaires de prière et la consultation du calendrier hégirien dans une interface adaptée aux mobiles et aux ordinateurs.
 
 <p align="center">
-  <strong>A thoughtful, installable web experience for Quran reading, recitation, prayer times, and the Islamic calendar.</strong>
-  <br />
-  Built with a focus on accessibility, responsive design, and a calm, distraction-conscious interface.
+  <a href="https://wakti-ashen.vercel.app/"><strong>Ouvrir Wakti</strong></a>
+  ·
+  <a href="https://github.com/WissemAttouf/Wakti"><strong>Code source</strong></a>
 </p>
 
-<p align="center">
-  <a href="https://wakti-ashen.vercel.app/"><img src="https://img.shields.io/badge/Live%20Demo-Open%20Wakti-0E6A58?style=for-the-badge" alt="Live demo" /></a>
-  <a href="https://github.com/WissemAttouf/Wakti"><img src="https://img.shields.io/badge/Source-GitHub-181717?style=for-the-badge&logo=github" alt="GitHub repository" /></a>
-  <img src="https://img.shields.io/badge/Platform-PWA-5A45FF?style=for-the-badge" alt="Progressive Web App" />
-  <img src="https://img.shields.io/badge/Runtime-Node.js%2020%2B-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js 20 or newer" />
-</p>
+## Présentation
 
----
+Le projet associe une interface responsive à des fonctionnalités du navigateur comme l’installation en PWA, la mise en cache via un service worker et la sauvegarde locale de préférences. Les données du Coran, des horaires de prière et des récitations dépendent de fournisseurs externes.
 
-## Overview
+## Fonctionnalités
 
-**Wakti** (وقتي) is a Progressive Web App that brings several everyday Islamic practices together in one responsive interface. Users can read and listen to the Quran, check prayer times for a selected location, and explore the Hijri and Gregorian calendars.
+### Lecture et écoute du Coran
+- Parcourir les 114 sourates.
+- Écouter des récitations avec contrôles de lecture, navigation dans les versets et sélection du récitant.
+- Reprendre la lecture et gérer des favoris et des marque-pages.
+- Utiliser des options de répétition pour accompagner la mémorisation.
+- Consulter le texte dans une vue de lecture inspirée du Mushaf.
 
-The project combines a carefully themed interface with browser capabilities such as local persistence, installability, and service-worker caching. It is designed to work on desktop and mobile screens, with dark and light appearance options.
+### Horaires de prière et habitudes quotidiennes
+- Afficher les horaires en fonction d’un lieu sélectionné.
+- Choisir les paramètres de calcul disponibles dans l’application.
+- Suivre la progression quotidienne des prières.
+- Configurer les rappels et préférences de notification pris en charge.
 
-**Try it:** [wakti-ashen.vercel.app](https://wakti-ashen.vercel.app/)  
-**Explore the code:** [github.com/WissemAttouf/Wakti](https://github.com/WissemAttouf/Wakti)
+### Calendrier
+- Consulter les dates grégoriennes et hégiriennes.
+- Naviguer entre les mois et sélectionner une date.
+- Ajuster le paramètre de date hégirienne disponible.
 
-## Key Features
+### Expérience utilisateur
+- Mise en page responsive.
+- Thèmes clair et sombre et options d’apparence.
+- Application installable grâce au manifeste PWA.
+- Mise en cache de ressources avec un service worker.
+- Sauvegarde locale des préférences et de la progression.
+- Interface en français et typographie adaptée au contenu arabe.
 
-### Quran reading and recitation
-- Browse the 114 surahs and find content using the Quran browsing interface.
-- Listen to Quran recitations with playback controls, verse navigation, and reciter selection.
-- Resume reading/listening and manage bookmarks and favourite reciters.
-- Use repeat and memorisation-support controls while learning verses.
-- Explore Quran text in a Mushaf-style reading view.
+## Technologies
 
-### Prayer times and daily routine
-- View prayer times based on a selected location.
-- Configure calculation method and school settings where supported by the app.
-- Track completed prayers and view daily progress.
-- Enable in-app prayer reminders and notification preferences.
+| Domaine | Technologies |
+|---|---|
+| Interface | HTML5, CSS3, JavaScript moderne |
+| Application progressive | Web App Manifest, Service Worker, Cache API |
+| Déploiement | Vercel |
+| Outils | Node.js 20+, npm |
+| Données du Coran et des prières | AlQuran Cloud, Aladhan, Islamic Network CDN |
+| Audio | Fournisseurs de récitations et endpoint proxy audio |
+| Packages serveur optionnels | web-push, @upstash/redis, @vercel/kv |
 
-### Hijri and Gregorian calendar
-- Browse dates in the Gregorian calendar alongside Hijri date information.
-- Navigate calendar months and inspect individual dates.
-- Adjust the Hijri date setting in the app.
+L’application repose principalement sur des technologies web natives et des modules JavaScript. La disponibilité des données et de l’audio dépend des services externes intégrés.
 
-### Product experience
-- Responsive layout designed for mobile and desktop.
-- Dark and light themes, with additional appearance presets.
-- Installable PWA experience with app manifest, icons, and standalone display mode.
-- Service-worker caching for the application shell, local images, and selected API responses.
-- Local browser storage for preferences and personal progress.
-- French interface copy and Arabic-focused typography for Quran content.
+## Architecture
 
-## Technology Stack
+- `index.html` — structure principale et métadonnées.
+- `css/style.css` — styles, thèmes et adaptation responsive.
+- `js/app.js` — navigation, expérience Coran, horaires, calendrier et préférences.
+- `sw.js` — stratégies de mise en cache.
+- `manifest.webmanifest` — métadonnées d’installation et icônes.
+- `vercel.json` — paramètres de déploiement et en-têtes.
+- `package.json` — métadonnées et scripts.
+- `api/` — endpoints serveur utilisés par l’application.
 
-| Area | Technologies |
-| --- | --- |
-| Front end | HTML5, CSS3, modern JavaScript (ES modules) |
-| App architecture | Client-side single-page navigation and modular UI behaviours |
-| PWA | Web App Manifest, Service Worker, Cache API |
-| Deployment | Vercel |
-| Runtime / package tooling | Node.js 20+, npm |
-| Quran and prayer data | AlQuran Cloud, Aladhan, Islamic Network CDN |
-| Audio | Quran recitation audio providers, with an application audio-proxy endpoint |
-| Optional server-side packages | `web-push`, `@upstash/redis`, `@vercel/kv` |
+## Lancer le projet localement
 
-The project is primarily a lightweight web application rather than a framework-heavy front end. External services provide Quran/prayer data and recitation audio; availability and response behaviour can depend on those providers.
-
-## Architecture at a Glance
-
-- `index.html` — application shell, metadata, and main interface.
-- `css/style.css` — design tokens, themes, layout, and responsive styling.
-- `js/app.js` — client-side application logic, navigation, Quran experience, prayer times, calendar, and user preferences.
-- `sw.js` — service worker and cache strategies.
-- `manifest.webmanifest` — installability metadata, icons, and app shortcuts.
-- `vercel.json` — deployment and response-header configuration.
-- `package.json` — package metadata and developer/deployment scripts.
-- `api/` — serverless API endpoints used by the application, including audio-related functionality.
-
-## Run Locally
-
-### Prerequisites
-- Node.js **20 or newer**
+### Prérequis
+- Node.js 20 ou plus récent
 - npm
 - Git
 
-### 1. Clone the repository
+### Installation
 
 ```bash
 git clone https://github.com/WissemAttouf/Wakti.git
 cd Wakti
-```
-
-### 2. Install dependencies
-
-```bash
 npm install
 ```
 
-### 3. Start a local static server
+Consultez `package.json` pour les scripts disponibles et les variables d’environnement requises. Les fonctionnalités reposant sur des services externes peuvent nécessiter une configuration complémentaire.
 
-The package provides a simple static-server script:
+## Démonstration
 
-```bash
-npm run serve
-```
+- **Application :** [wakti-ashen.vercel.app](https://wakti-ashen.vercel.app/)
+- **Code source :** [WissemAttouf/Wakti](https://github.com/WissemAttouf/Wakti)
 
-Open [http://localhost:3000](http://localhost:3000).
+## Auteur
 
-> **Note:** Some features rely on external APIs or Vercel serverless endpoints. For the closest match to the deployed application, use the Vercel CLI and run the project in the Vercel development environment. If a feature depends on a deployment-only endpoint, a plain static server may not reproduce it.
-
-## Deploy to Vercel
-
-1. Import the repository into [Vercel](https://vercel.com/), or link it with the Vercel CLI.
-2. Keep the project root set to the repository root.
-3. Review any environment variables required by enabled server-side integrations.
-4. Deploy and test the production URL on both mobile and desktop.
-
-The repository includes a `deploy` script for production and a `deploy:preview` script for preview deployments:
-
-```bash
-npm run deploy:preview
-npm run deploy
-```
-
-Do not commit private API keys, tokens, or production credentials to Git.
-
-## Quality and Engineering Notes
-
-The project includes several practical web-platform considerations:
-
-- **PWA fundamentals:** manifest, app icons, standalone display mode, and a service worker.
-- **Caching:** separate cache handling for the application shell, local images, and selected external API responses.
-- **Resilient requests:** shared JSON-fetching utilities include retry and timeout handling.
-- **User preferences:** local storage is used for settings and progress that should persist between visits on the same browser.
-- **Browser integration:** audio playback and media controls are designed around browser capabilities.
-- **Security headers:** Vercel configuration defines a Content Security Policy and other response headers. Review the policy whenever adding new external providers or scripts.
-
-External APIs and media hosts may change their availability, URL structure, or usage policies. Review their current documentation before extending the integration.
-
-## Roadmap Ideas
-
-Potential future improvements—not claims about current functionality—include:
-- Add automated unit and end-to-end tests to the repository.
-- Document accessibility checks and performance budgets.
-- Add a concise contributor guide and issue templates.
-- Provide a privacy page explaining what stays in browser storage and what is sent to external providers.
-- Add documented screenshots and a feature walkthrough.
-
-## Contributing
-
-Suggestions, bug reports, and improvements are welcome. Before opening a pull request:
-
-1. Keep changes focused and explain the user-facing impact.
-2. Test the affected flows in a modern browser.
-3. Check mobile layouts and both themes.
-4. Verify that any new external resource is compatible with the Content Security Policy.
-5. Never include credentials or personal data in commits.
-
-## Author
-
-**Wissem Attouf** — Software Engineer / Full-Stack Developer
-
-- GitHub: [@WissemAttouf](https://github.com/WissemAttouf)
-- Live project: [Wakti](https://wakti-ashen.vercel.app/)
-
----
-
-<p align="center">
-  <sub>Wakti — make space for what matters, one day at a time.</sub>
-</p>
+**Wissem Attouf** — Ingénieur logiciel | Développeur Full Stack  
+[GitHub](https://github.com/WissemAttouf) · [LinkedIn](https://www.linkedin.com/in/wissem-attouf-452509226/) · [Portfolio](https://wissem-portfolio.vercel.app/) · [E-mail](mailto:wattouf35@gmail.com)
