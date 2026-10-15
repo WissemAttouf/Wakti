@@ -82,6 +82,40 @@ npm install
 
 Consultez `package.json` pour les scripts disponibles et les variables d’environnement requises. Les fonctionnalités reposant sur des services externes peuvent nécessiter une configuration complémentaire.
 
+## Captures d’écran
+
+Ajoutez les captures de l’application dans [`docs/images/`](docs/images/), puis utilisez les images ci-dessous. Les noms sont des exemples : remplacez-les par les noms exacts des fichiers déposés dans le dossier.
+
+<p align="center">
+  <img src="docs/images/accueil.png" alt="Accueil de Wakti" width="800">
+</p>
+
+<p align="center">
+  <img src="docs/images/coran.png" alt="Lecture du Coran dans Wakti" width="800">
+</p>
+
+<p align="center">
+  <img src="docs/images/lecture-audio.png" alt="Écoute des récitations dans Wakti" width="800">
+</p>
+
+<p align="center">
+  <img src="docs/images/horaires-priere.png" alt="Horaires de prière dans Wakti" width="800">
+</p>
+
+<p align="center">
+  <img src="docs/images/calendrier-hijri.png" alt="Calendrier hégirien dans Wakti" width="800">
+</p>
+
+<p align="center">
+  <img src="docs/images/parametres.png" alt="Paramètres de Wakti" width="800">
+</p>
+
+<p align="center">
+  <img src="docs/images/mobile.png" alt="Interface mobile de Wakti" width="400">
+</p>
+
+> **Important :** GitHub ne peut afficher les captures que si les fichiers image correspondants existent dans `docs/images/`. Le fichier `README.md` du dossier sert de guide et ne remplace pas les images.
+
 ## Démonstration
 
 - **Application :** [wakti-ashen.vercel.app](https://wakti-ashen.vercel.app/)
