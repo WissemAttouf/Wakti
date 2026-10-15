@@ -21,72 +21,6 @@ Wakti rassemble plusieurs outils du quotidien dans une interface web responsive 
 - **Personnalisation :** utiliser les options d’apparence et gérer les préférences.
 - **Expérience PWA :** installer l’application sur un appareil compatible et profiter de la mise en cache des ressources.
 
-## Captures d’écran
-
-Les captures ci-dessous donnent un aperçu de l’interface et des principaux écrans de Wakti. Chaque légende aide à comprendre ce que présente l’image.
-
-### Interface de l’application
-
-<p align="center">
-  <img src="docs/images/wakti.PNG" alt="Vue générale de l’application Wakti" width="800">
-  <br>
-  <strong>Vue générale de Wakti</strong><br>
-  <em>Aperçu de l’interface et de l’organisation visuelle de l’application.</em>
-</p>
-
-<p align="center">
-  <img src="docs/images/wakti2.PNG" alt="Interface de Wakti — deuxième capture" width="800">
-  <br>
-  <strong>Navigation dans l’application</strong><br>
-  <em>Un aperçu complémentaire de l’interface et de la navigation entre les espaces de l’application.</em>
-</p>
-
-<p align="center">
-  <img src="docs/images/wakti3.PNG" alt="Interface de Wakti — troisième capture" width="800">
-  <br>
-  <strong>Consultation des contenus</strong><br>
-  <em>Exemple d’écran permettant de découvrir les contenus et les fonctionnalités proposés par Wakti.</em>
-</p>
-
-<p align="center">
-  <img src="docs/images/wakti4.PNG" alt="Interface de Wakti — quatrième capture" width="800">
-  <br>
-  <strong>Fonctionnalités de Wakti</strong><br>
-  <em>Illustration de l’expérience utilisateur et de la présentation des fonctionnalités.</em>
-</p>
-
-<p align="center">
-  <img src="docs/images/wakti7.PNG" alt="Interface de Wakti — cinquième capture" width="800">
-  <br>
-  <strong>Expérience utilisateur</strong><br>
-  <em>Vue supplémentaire montrant le soin apporté à l’interface et à la lisibilité.</em>
-</p>
-
-<p align="center">
-  <img src="docs/images/wakti9.PNG" alt="Interface de Wakti — sixième capture" width="800">
-  <br>
-  <strong>Aperçu complémentaire</strong><br>
-  <em>Une autre vue de l’application qui complète la présentation de ses écrans.</em>
-</p>
-
-### Bienvenue et authentification
-
-<p align="center">
-  <img src="docs/images/WAKTIWELCOME.PNG" alt="Écran de bienvenue de Wakti" width="800">
-  <br>
-  <strong>Écran de bienvenue</strong><br>
-  <em>Première étape de découverte de Wakti avant l’accès à l’application.</em>
-</p>
-
-<p align="center">
-  <img src="docs/images/waktiauth.PNG" alt="Écran d’authentification de Wakti" width="800">
-  <br>
-  <strong>Authentification</strong><br>
-  <em>Écran dédié au parcours d’accès utilisateur.</em>
-</p>
-
-> **À vérifier :** les huit fichiers image doivent être présents dans `docs/images/` avec exactement les mêmes noms et la même casse que dans ce README.
-
 ## Technologies
 
 | Domaine | Technologies |
@@ -138,7 +72,6 @@ Consultez `package.json` pour les scripts disponibles et les variables d’envir
 
 **Wissem Attouf** — Software Engineer | Full-Stack Developer  
 [GitHub](https://github.com/WissemAttouf) · [LinkedIn](https://www.linkedin.com/in/wissem-attouf-452509226/) · [Portfolio](https://wissem-portfolio.vercel.app/) · [E-mail](mailto:wattouf35@gmail.com)
-
 
 ---
 
