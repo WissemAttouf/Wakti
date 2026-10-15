@@ -1,4 +1,4 @@
-# Wakti — Coran, horaires de prière et calendrier hégirien
+# 💻 Wakti — Coran, horaires de prière et calendrier hégirien
 
 **Wakti (وقتي)** est une application web progressive (PWA) qui réunit la lecture et l’écoute du Coran, les horaires de prière et la consultation du calendrier hégirien dans une interface adaptée aux mobiles et aux ordinateurs.
 
@@ -8,11 +8,11 @@
   <a href="https://github.com/WissemAttouf/Wakti"><strong>Consulter le code source</strong></a>
 </p>
 
-## Présentation
+## 📌 Présentation
 
 Wakti rassemble plusieurs outils du quotidien dans une interface web responsive : consultation du Coran, écoute de récitations, horaires de prière et calendrier hégirien. Le projet intègre également des fonctionnalités PWA, la sauvegarde locale de préférences et la mise en cache de ressources.
 
-## Fonctionnalités principales
+## ✨ Fonctionnalités principales
 
 - **Coran :** parcourir les sourates et consulter le texte.
 - **Écoute :** lancer des récitations et utiliser les commandes de lecture disponibles.
@@ -21,7 +21,7 @@ Wakti rassemble plusieurs outils du quotidien dans une interface web responsive 
 - **Personnalisation :** utiliser les options d’apparence et gérer les préférences.
 - **Expérience PWA :** installer l’application sur un appareil compatible et profiter de la mise en cache des ressources.
 
-## Technologies
+## 🛠️ Technologies
 
 | Domaine | Technologies |
 |---|---|
@@ -35,7 +35,7 @@ Wakti rassemble plusieurs outils du quotidien dans une interface web responsive 
 
 L’application repose principalement sur des technologies web natives et des modules JavaScript. La disponibilité des données et de l’audio dépend des services externes intégrés.
 
-## Architecture du projet
+## 🗂️ Architecture du projet
 
 - `index.html` — structure principale et métadonnées.
 - `css/style.css` — styles, thèmes et adaptation responsive.
@@ -46,14 +46,14 @@ L’application repose principalement sur des technologies web natives et des mo
 - `package.json` — métadonnées et scripts.
 - `api/` — endpoints serveur utilisés par l’application.
 
-## Installation locale
+## ⚙️ Installation locale
 
-### Prérequis
+### ⚙️ Prérequis
 - Node.js 20 ou plus récent
 - npm
 - Git
 
-### Étapes
+### ⚙️ Étapes
 
 ```bash
 git clone https://github.com/WissemAttouf/Wakti.git
@@ -63,7 +63,7 @@ npm install
 
 Consultez `package.json` pour les scripts disponibles et les variables d’environnement requises. Certaines fonctionnalités reposant sur des services externes peuvent nécessiter une configuration complémentaire.
 
-## Démonstration
+## 🚀 Démonstration
 
 - **Application en ligne :** [wakti-ashen.vercel.app](https://wakti-ashen.vercel.app/)
 - **Dépôt GitHub :** [WissemAttouf/Wakti](https://github.com/WissemAttouf/Wakti)
@@ -121,7 +121,7 @@ Consultez `package.json` pour les scripts disponibles et les variables d’envir
 
 ---
 
-## Auteur
+## 👨‍💻 Auteur
 
 **Wissem Attouf** — Software Engineer | Full-Stack Developer  
 [GitHub](https://github.com/WissemAttouf) · [LinkedIn](https://www.linkedin.com/in/wissem-attouf-452509226/) · [Portfolio](https://wissem-portfolio.vercel.app/) · [E-mail](mailto:wattouf35@gmail.com)
