@@ -68,12 +68,6 @@ Consultez `package.json` pour les scripts disponibles et les variables d’envir
 - **Application en ligne :** [wakti-ashen.vercel.app](https://wakti-ashen.vercel.app/)
 - **Dépôt GitHub :** [WissemAttouf/Wakti](https://github.com/WissemAttouf/Wakti)
 
-## Auteur
-
-**Wissem Attouf** — Software Engineer | Full-Stack Developer  
-[GitHub](https://github.com/WissemAttouf) · [LinkedIn](https://www.linkedin.com/in/wissem-attouf-452509226/) · [Portfolio](https://wissem-portfolio.vercel.app/) · [E-mail](mailto:wattouf35@gmail.com)
-
----
 
 ## 📸 Captures d’écran
 
@@ -124,3 +118,12 @@ Consultez `package.json` pour les scripts disponibles et les variables d’envir
   <br><strong>Authentification</strong>
   <br><em>Écran consacré au parcours d’accès utilisateur.</em>
 </p>
+
+---
+
+## Auteur
+
+**Wissem Attouf** — Software Engineer | Full-Stack Developer  
+[GitHub](https://github.com/WissemAttouf) · [LinkedIn](https://www.linkedin.com/in/wissem-attouf-452509226/) · [Portfolio](https://wissem-portfolio.vercel.app/) · [E-mail](mailto:wattouf35@gmail.com)
+
+---
