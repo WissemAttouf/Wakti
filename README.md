@@ -3,84 +3,89 @@
 **Wakti (وقتي)** est une application web progressive (PWA) qui réunit la lecture et l’écoute du Coran, les horaires de prière et la consultation du calendrier hégirien dans une interface adaptée aux mobiles et aux ordinateurs.
 
 <p align="center">
-  <a href="https://wakti-ashen.vercel.app/"><strong>Ouvrir Wakti</strong></a>
+  <a href="https://wakti-ashen.vercel.app/"><strong>Découvrir l’application</strong></a>
   ·
-  <a href="https://github.com/WissemAttouf/Wakti"><strong>Code source</strong></a>
+  <a href="https://github.com/WissemAttouf/Wakti"><strong>Consulter le code source</strong></a>
 </p>
 
 ## Présentation
 
-Le projet associe une interface responsive à des fonctionnalités du navigateur comme l’installation en PWA, la mise en cache via un service worker et la sauvegarde locale de préférences. Les données du Coran, des horaires de prière et des récitations dépendent de fournisseurs externes.
+Wakti rassemble plusieurs outils du quotidien dans une interface web responsive : consultation du Coran, écoute de récitations, horaires de prière et calendrier hégirien. Le projet intègre également des fonctionnalités PWA, la sauvegarde locale de préférences et la mise en cache de ressources.
 
-## Fonctionnalités
+## Fonctionnalités principales
 
-### Lecture et écoute du Coran
-- Parcourir les 114 sourates.
-- Écouter des récitations avec contrôles de lecture, navigation dans les versets et sélection du récitant.
-- Reprendre la lecture et gérer des favoris et des marque-pages.
-- Utiliser des options de répétition pour accompagner la mémorisation.
-- Consulter le texte dans une vue de lecture inspirée du Mushaf.
-
-### Horaires de prière et habitudes quotidiennes
-- Afficher les horaires en fonction d’un lieu sélectionné.
-- Choisir les paramètres de calcul disponibles dans l’application.
-- Suivre la progression quotidienne des prières.
-- Configurer les rappels et préférences de notification pris en charge.
-
-### Calendrier
-- Consulter les dates grégoriennes et hégiriennes.
-- Naviguer entre les mois et sélectionner une date.
-- Ajuster le paramètre de date hégirienne disponible.
-
-### Expérience utilisateur
-- Mise en page responsive.
-- Thèmes clair et sombre et options d’apparence.
-- Application installable grâce au manifeste PWA.
-- Mise en cache de ressources avec un service worker.
-- Sauvegarde locale des préférences et de la progression.
-- Interface en français et typographie adaptée au contenu arabe.
+- **Coran :** parcourir les sourates et consulter le texte.
+- **Écoute :** lancer des récitations et utiliser les commandes de lecture disponibles.
+- **Horaires de prière :** consulter les horaires selon le lieu et les paramètres proposés.
+- **Calendrier hégirien :** naviguer entre les dates grégoriennes et hégiriennes.
+- **Personnalisation :** utiliser les options d’apparence et gérer les préférences.
+- **Expérience PWA :** installer l’application sur un appareil compatible et profiter de la mise en cache des ressources.
 
 ## Captures d’écran
 
-Les captures suivantes sont enregistrées dans le dossier [`docs/images/`](docs/images/).
+Les captures ci-dessous donnent un aperçu de l’interface et des principaux écrans de Wakti. Chaque légende aide à comprendre ce que présente l’image.
 
-### Écrans de l’application
+### Interface de l’application
 
 <p align="center">
-  <img src="docs/images/wakti.PNG" alt="Capture d’écran de Wakti" width="800">
+  <img src="docs/images/wakti.PNG" alt="Vue générale de l’application Wakti" width="800">
+  <br>
+  <strong>Vue générale de Wakti</strong><br>
+  <em>Aperçu de l’interface et de l’organisation visuelle de l’application.</em>
 </p>
 
 <p align="center">
-  <img src="docs/images/wakti2.PNG" alt="Deuxième capture d’écran de Wakti" width="800">
+  <img src="docs/images/wakti2.PNG" alt="Interface de Wakti — deuxième capture" width="800">
+  <br>
+  <strong>Navigation dans l’application</strong><br>
+  <em>Un aperçu complémentaire de l’interface et de la navigation entre les espaces de l’application.</em>
 </p>
 
 <p align="center">
-  <img src="docs/images/wakti3.PNG" alt="Troisième capture d’écran de Wakti" width="800">
+  <img src="docs/images/wakti3.PNG" alt="Interface de Wakti — troisième capture" width="800">
+  <br>
+  <strong>Consultation des contenus</strong><br>
+  <em>Exemple d’écran permettant de découvrir les contenus et les fonctionnalités proposés par Wakti.</em>
 </p>
 
 <p align="center">
-  <img src="docs/images/wakti4.PNG" alt="Quatrième capture d’écran de Wakti" width="800">
+  <img src="docs/images/wakti4.PNG" alt="Interface de Wakti — quatrième capture" width="800">
+  <br>
+  <strong>Fonctionnalités de Wakti</strong><br>
+  <em>Illustration de l’expérience utilisateur et de la présentation des fonctionnalités.</em>
 </p>
 
 <p align="center">
-  <img src="docs/images/wakti7.PNG" alt="Cinquième capture d’écran de Wakti" width="800">
+  <img src="docs/images/wakti7.PNG" alt="Interface de Wakti — cinquième capture" width="800">
+  <br>
+  <strong>Expérience utilisateur</strong><br>
+  <em>Vue supplémentaire montrant le soin apporté à l’interface et à la lisibilité.</em>
 </p>
 
 <p align="center">
-  <img src="docs/images/wakti9.PNG" alt="Sixième capture d’écran de Wakti" width="800">
+  <img src="docs/images/wakti9.PNG" alt="Interface de Wakti — sixième capture" width="800">
+  <br>
+  <strong>Aperçu complémentaire</strong><br>
+  <em>Une autre vue de l’application qui complète la présentation de ses écrans.</em>
 </p>
 
 ### Bienvenue et authentification
 
 <p align="center">
   <img src="docs/images/WAKTIWELCOME.PNG" alt="Écran de bienvenue de Wakti" width="800">
+  <br>
+  <strong>Écran de bienvenue</strong><br>
+  <em>Première étape de découverte de Wakti avant l’accès à l’application.</em>
 </p>
 
 <p align="center">
   <img src="docs/images/waktiauth.PNG" alt="Écran d’authentification de Wakti" width="800">
+  <br>
+  <strong>Authentification</strong><br>
+  <em>Écran dédié au parcours d’accès utilisateur.</em>
 </p>
 
-> **Remarque :** les chemins et la casse des noms de fichiers doivent correspondre exactement aux fichiers présents dans le dépôt GitHub.
+> **À vérifier :** les huit fichiers image doivent être présents dans `docs/images/` avec exactement les mêmes noms et la même casse que dans ce README.
 
 ## Technologies
 
@@ -96,25 +101,25 @@ Les captures suivantes sont enregistrées dans le dossier [`docs/images/`](docs/
 
 L’application repose principalement sur des technologies web natives et des modules JavaScript. La disponibilité des données et de l’audio dépend des services externes intégrés.
 
-## Architecture
+## Architecture du projet
 
 - `index.html` — structure principale et métadonnées.
 - `css/style.css` — styles, thèmes et adaptation responsive.
-- `js/app.js` — navigation, expérience Coran, horaires, calendrier et préférences.
+- `js/app.js` — navigation, Coran, horaires, calendrier et préférences.
 - `sw.js` — stratégies de mise en cache.
 - `manifest.webmanifest` — métadonnées d’installation et icônes.
 - `vercel.json` — paramètres de déploiement et en-têtes.
 - `package.json` — métadonnées et scripts.
 - `api/` — endpoints serveur utilisés par l’application.
 
-## Lancer le projet localement
+## Installation locale
 
 ### Prérequis
 - Node.js 20 ou plus récent
 - npm
 - Git
 
-### Installation
+### Étapes
 
 ```bash
 git clone https://github.com/WissemAttouf/Wakti.git
@@ -122,14 +127,14 @@ cd Wakti
 npm install
 ```
 
-Consultez `package.json` pour les scripts disponibles et les variables d’environnement requises. Les fonctionnalités reposant sur des services externes peuvent nécessiter une configuration complémentaire.
+Consultez `package.json` pour les scripts disponibles et les variables d’environnement requises. Certaines fonctionnalités reposant sur des services externes peuvent nécessiter une configuration complémentaire.
 
 ## Démonstration
 
-- **Application :** [wakti-ashen.vercel.app](https://wakti-ashen.vercel.app/)
-- **Code source :** [WissemAttouf/Wakti](https://github.com/WissemAttouf/Wakti)
+- **Application en ligne :** [wakti-ashen.vercel.app](https://wakti-ashen.vercel.app/)
+- **Dépôt GitHub :** [WissemAttouf/Wakti](https://github.com/WissemAttouf/Wakti)
 
 ## Auteur
 
-**Wissem Attouf** — Ingénieur logiciel | Développeur Full Stack  
+**Wissem Attouf** — Software Engineer | Full-Stack Developer  
 [GitHub](https://github.com/WissemAttouf) · [LinkedIn](https://www.linkedin.com/in/wissem-attouf-452509226/) · [Portfolio](https://wissem-portfolio.vercel.app/) · [E-mail](mailto:wattouf35@gmail.com)
